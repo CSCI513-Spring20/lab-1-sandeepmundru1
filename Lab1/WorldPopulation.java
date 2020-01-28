@@ -6,15 +6,14 @@ import java.io.Reader;
 import java.util.StringTokenizer;
 
 public class WorldPopulation {
-	String token1,token2,token3;
+	String T1,T2,T3;
 	int i=0; 
 	int h = 0;
 	long totalPopulation = 0;
 	
 
 	SortStratergy sortStratergy;
-	long[] population = new long[13484]; // Cheating because we know number of records!!
-	// Lab Exercise:  After creating some Stratergy classes -- set the default Stratergy here.
+	long[] population = new long[13484]; 
 	public WorldPopulation(){
 		sortStratergy = new SelectionSort(); // Set the default Stratergy here.	
 	}
@@ -27,8 +26,6 @@ public class WorldPopulation {
 		sortStratergy = Stratergy;
 	}
 	
-	// Lab Exercise:  Read in the WorldPopulation.csv
-	// Extract ONLY the numbers and store them into population[]
 	public long[] readPopulationFile(String fileName){
 		i = 0;
 		
@@ -39,10 +36,10 @@ public class WorldPopulation {
 			while((line = reader.readLine()) != null) {
 			//System.out.println(line);
 				StringTokenizer tokenizer = new StringTokenizer(line, ",") ;
-				token1 = tokenizer.nextToken();
-				token2 = tokenizer.nextToken();
-				token3 = tokenizer.nextToken();
-				population[i] = Long.parseLong(token3);
+				T1 = tokenizer.nextToken();
+				T2 = tokenizer.nextToken();
+				T3 = tokenizer.nextToken();
+				population[i] = Long.parseLong(T3);
 				i++;
 				
 			 }
@@ -56,8 +53,6 @@ public class WorldPopulation {
 		return population;
 	}
 	
-	// Lab Exercise.  Complete this method.
-	// Delegate sorting to the Stratergy object
 	public void sortPopulation(SortStratergy Stratergy){
 		Stratergy.getSortTime(population);
 		
@@ -74,8 +69,6 @@ public class WorldPopulation {
 			System.out.println(totalPopulation);
 	}
 	
-	// Experiment with various strategies.
-	// Create 3 strategies -- Bubble, insertion, and selection sort.
 	public static void main(String[] args) {
 		WorldPopulation worldPopulation = new WorldPopulation();
 		worldPopulation.readInputFile();
